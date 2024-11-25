@@ -26,7 +26,7 @@ def cmd_nageur(liste):
             print(f"{elt[1]:8} | {elt[2]}")
 
 def cmd_nage(liste):
-    """Affiche le type de nage"""
+    """Affiche toutes les performances suivant une nage donnée"""
     tmp = input("Quelle nage ?")
     print("nage",tmp)
     print("nageur | longueur")
