@@ -10,9 +10,18 @@ def cmd_ajout(liste):
 
 def cmd_liste(liste):
     """Affiche toutes les performances des nageurs"""
+    print("Prénom   |   nage    |   longueur")
+    print("---------------------------------")
     for elt in liste:
-            print(f"Prénom {elt[0]}, nage{elt[1]}, longueur {elt[2]}")
+            print(f" {elt[0]:11}| {elt[1]:8}|   {elt[2]}")e
 
+
+def cmd_exit():
+    tmp = input ("En êtres-vous sûr ? (o)ui/(n)on")
+    if tmp == 'o':
+        return False
+    else:
+        return True
 
 isAlive = True
 while isAlive:
@@ -23,14 +32,11 @@ while isAlive:
         continue
    
     if commande == 'liste':
-        for elt in liste:
-            print(f"Prénom {elt[0]}, nage {elt[1]}, longueur {elt[2]}")
+        cmd_liste(liste)
         continue
 
     if commande == 'exit':
-        tmp = input ("En êtes-vous sûr ? (o)ui:(n)on")
-        if tmp == 'o':
-            isAlive = False
+        isAlive = cmd_exit()
         continue
 
     print(f"Commande{commande}inconnue")
