@@ -15,17 +15,25 @@ def cmd_liste(liste):
     for elt in liste:
             print(f" {elt[0]:11}| {elt[1]:8}|   {elt[2]}")
 
-def cmd_nageur():
-    """"Affiche toutes les performancesn d'un nageur"""
+def cmd_nageur(liste):
+    """"Affiche toutes les performances d'un nageur"""
     tmp = input("Quel nageur?")
     print("Performance de ",tmp)
     print("nage |   longueur")
     print("-------------------")
     for elt in liste:
         if elt[0]== tmp:
-            print(f"{elt[1]} | {elt[2]}")
+            print(f"{elt[1]:8} | {elt[2]}")
 
-
+def cmd_nage(liste):
+    """Affiche le type de nage"""
+    tmp = input("Quelle nage ?")
+    print("nage",tmp)
+    print("nageur | longueur")
+    print("----------------")
+    for elt in liste:
+        if elt[1]== tmp:
+            print(f"{elt[0]:11} | {elt[2]}")      
 
 def cmd_exit():
     tmp = input ("En êtres-vous sûr ? (o)ui/(n)on")
@@ -47,7 +55,11 @@ while isAlive:
         continue
 
     if commande == 'nageur':
-        cmd_nageur()
+        cmd_nageur(liste)
+        continue
+
+    if commande == 'nage':
+        cmd_nage(liste)
         continue
 
     if commande == 'exit':
