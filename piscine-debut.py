@@ -36,10 +36,24 @@ def cmd_nage(liste):
             print(f"{elt[0]:11} | {elt[2]}")
 
 def cmd_sauvegarde(liste):
+    """Sauvegarde la BDD"""
     fichier = open('save.csv', 'w')
     for elt in liste:
-    fichier.write(elt[0]+','+elt[1]+','+str(elt[2])+"\n")
-    fichier.close()     
+        fichier.write(elt[0]+','+elt[1]+','+str(elt[2])+"\n")
+    fichier.close()
+
+def cmd_charger(liste):
+    """charger la BDD"""
+    fichier = open('save.csv', 'r')
+    for line in fichier:
+        line.strip()
+        if line[-1] == '\n':
+            line = line[:-1]
+        if line[0]=='#':
+            continue
+        tmp = line.split(',')
+        liste.append(tuple(tmp))
+    fichier.close()    
 
 def cmd_exit():
     tmp = input ("En êtres-vous sûr ? (o)ui/(n)on")
@@ -70,6 +84,10 @@ while isAlive:
 
     if commande == "sauvegarde":
         cmd_sauvegarde(liste)
+        continue
+
+    if commande == "charger":
+        cmd_charger(liste)
         continue
 
     if commande == 'exit':
