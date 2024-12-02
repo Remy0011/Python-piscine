@@ -35,16 +35,16 @@ def cmd_nage(liste):
         if elt[1]== tmp:
             print(f"{elt[0]:11} | {elt[2]}")
 
-def cmd_sauvegarde(liste):
+def cmd_sauvegarde(liste, filename):
     """Sauvegarde la BDD"""
-    fichier = open('save.csv', 'w')
+    fichier = open(filename, 'w')
     for elt in liste:
         fichier.write(elt[0]+','+elt[1]+','+str(elt[2])+"\n")
     fichier.close()
 
-def cmd_charger(liste):
+def cmd_charger(liste, filename):
     """charger la BDD"""
-    fichier = open('save.csv', 'r')
+    fichier = open(filename, 'r')
     for line in fichier:
         line.strip()
         if line[-1] == '\n':
@@ -83,11 +83,11 @@ while isAlive:
         continue
 
     if commande == "sauvegarde":
-        cmd_sauvegarde(liste)
+        cmd_sauvegarde(liste,"save.csv")
         continue
 
     if commande == "charger":
-        cmd_charger(liste)
+        cmd_charger(liste,"save.csv")
         continue
 
     if commande == 'exit':
