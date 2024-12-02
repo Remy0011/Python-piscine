@@ -33,7 +33,13 @@ def cmd_nage(liste):
     print("----------------")
     for elt in liste:
         if elt[1]== tmp:
-            print(f"{elt[0]:11} | {elt[2]}")      
+            print(f"{elt[0]:11} | {elt[2]}")
+
+def cmd_sauvegarde(liste):
+    fichier = open('save.csv', 'w')
+    for elt in liste:
+    fichier.write(elt[0]+','+elt[1]+','+str(elt[2])+"\n")
+    fichier.close()     
 
 def cmd_exit():
     tmp = input ("En êtres-vous sûr ? (o)ui/(n)on")
@@ -60,6 +66,10 @@ while isAlive:
 
     if commande == 'nage':
         cmd_nage(liste)
+        continue
+
+    if commande == "sauvegarde":
+        cmd_sauvegarde(liste)
         continue
 
     if commande == 'exit':
